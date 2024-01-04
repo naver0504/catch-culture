@@ -4,9 +4,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-**/src/main/resources/*.yml
-**/src/test/resources/*.json
-**/src/test/resources/*.p12
+
 
 ### STS ###
 .apt_generated
@@ -21,6 +19,14 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+
+**/src/main/resources/
+
+#**/src/main/resources/application.yml
+#**/src/main/resources/application-production.yml
+#**/src/main/resources/application-local.yml
+#**/src/main/resources/keystore.p12
+#**/src/main/resources/elegantchildren-57034633fedb.json
 .idea
 *.iws
 *.iml
