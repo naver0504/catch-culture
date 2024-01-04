@@ -4,6 +4,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+!**/src/main/resources/*.yml
+!**/src/test/resources/*.json
+!**/src/test/resources/*.p12
 
 ### STS ###
 .apt_generated
