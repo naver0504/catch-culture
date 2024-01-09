@@ -46,3 +46,11 @@
 2.  누구나 문화 행사 제보, 문화 행사 방문 인증 가능
 * 방문 인증이 완료된 경우, 리뷰 작성을 할 수 있는 사용자 참여 시스템
 * 문화 행사에 관심을 가지고 참여하면 보상 획득
+
+
+**실행 화면** <br/>
+
+|메인 화면|문화 행사 제보|문화 행사 검색|문화 행사 상세 정보|문화 행사 리뷰|지 도|마이 페이지|
+|---|---|---|---|---|---|---|
+|<img width="311" alt="git_main" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/6cac2560-e0f7-4a34-b3fb-4da7612041fe">|<img width="312" alt="git_report" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/d13fba26-7f39-424d-acd6-b4fb0382e4cb">|<img width="312" alt="git_search" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/57c5c71b-5043-4c97-ac6a-277ca578211c">|<img width="315" alt="git_det" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/176ab80e-23d7-443a-bfa3-2d3b6fb4ad48">|<img width="308" alt="git_review" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/be1e00c5-c1c4-4587-bc3e-d2b4bb316237">|<img width="315" alt="git_map" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/2812b278-b77b-4bdb-984a-5915fee3a0bc">|<img width="314" alt="git_user" src="https://github.com/ElegantChildren/FrontEnd/assets/24996261/11959296-d4bd-46c7-b5aa-a09673aadb68">|
+   
