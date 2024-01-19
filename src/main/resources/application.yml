@@ -28,7 +28,3 @@ jwt:
 openapi:
   key: 426e594f5673737338366a70714f68
 
-google:
-  geocoding:
-    apiKey: AIzaSyDdytS0jiP68y5KSqpTrnlzPELblXnUXog
-    endpoint: https://maps.googleapis.com/maps/api/geocode/json
