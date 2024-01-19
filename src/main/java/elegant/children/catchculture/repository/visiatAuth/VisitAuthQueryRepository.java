@@ -68,16 +68,16 @@ public class VisitAuthQueryRepository {
                         visitAuthIdGt(lastId)
                 )
                 .orderBy(visitAuth.id.asc())
-                .limit(PAGE_SIZE + 1l)
+                .limit(OTHER_PAGE_SIZE + 1l)
                 .fetch();
 
         boolean hasNext = false;
 
-        if(content.size() == PAGE_SIZE + 1l) {
-            content.remove(PAGE_SIZE);
+        if(content.size() == OTHER_PAGE_SIZE + 1l) {
+            content.remove(OTHER_PAGE_SIZE);
             hasNext = true;
         }
-        return new SliceImpl<>(content, PageRequest.ofSize(PAGE_SIZE), hasNext);
+        return new SliceImpl<>(content, PageRequest.ofSize(OTHER_PAGE_SIZE), hasNext);
 
     }
 

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static elegant.children.catchculture.common.constant.PageSize.PAGE_SIZE;
+import static elegant.children.catchculture.common.constant.PageSize.OTHER_PAGE_SIZE;
 import static elegant.children.catchculture.entity.review.QReview.*;
 import static elegant.children.catchculture.entity.user.QUser.*;
 
@@ -74,16 +74,16 @@ public class ReviewQueryRepository {
 
                 )
                 .orderBy(review.id.desc())
-                .limit(PAGE_SIZE +1L)
+                .limit(OTHER_PAGE_SIZE +1L)
                 .fetch();
 
         boolean hasNext = false;
 
-        if(content.size() == PAGE_SIZE + 1L) {
-            content.remove(PAGE_SIZE);
+        if(content.size() == OTHER_PAGE_SIZE + 1L) {
+            content.remove(OTHER_PAGE_SIZE);
             hasNext = true;
         }
-        return new SliceImpl<>(content, PageRequest.ofSize(PAGE_SIZE), hasNext);
+        return new SliceImpl<>(content, PageRequest.ofSize(OTHER_PAGE_SIZE), hasNext);
 
     }
 

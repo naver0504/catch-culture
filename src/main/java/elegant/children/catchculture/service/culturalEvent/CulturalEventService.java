@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static elegant.children.catchculture.common.constant.PageSize.createPageRequest;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -83,9 +85,7 @@ public class CulturalEventService {
         return list.stream().map(CulturalEventMapResponseDTO::new).collect(Collectors.toList());
     }
 
-    public static PageRequest createPageRequest(int offset) {
-        return PageRequest.of(offset, 8);
-    }
+
 
 
 

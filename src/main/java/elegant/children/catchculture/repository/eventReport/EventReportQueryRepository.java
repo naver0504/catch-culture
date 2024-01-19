@@ -38,17 +38,17 @@ public class EventReportQueryRepository {
                 .where(
                         eventReportIdGt(lastId),
                         eventReport.isReported.eq(false)
-                ).limit(PAGE_SIZE + 1L)
+                ).limit(OTHER_PAGE_SIZE + 1L)
                 .orderBy(eventReport.id.asc())
                 .fetch();
 
         boolean hasNext = false;
-        if (content.size() == PAGE_SIZE + 1L) {
+        if (content.size() == OTHER_PAGE_SIZE + 1L) {
             hasNext = true;
-            content.remove(PAGE_SIZE);
+            content.remove(OTHER_PAGE_SIZE);
         }
 
-        return new SliceImpl<>(content, PageRequest.ofSize(PAGE_SIZE), hasNext);
+        return new SliceImpl<>(content, PageRequest.ofSize(OTHER_PAGE_SIZE), hasNext);
 
     }
 
