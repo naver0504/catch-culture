@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public ResponseEntity<UserProfileResponseDTO> getUserProfile(final @AuthenticationPrincipal User user) {
-        return ResponseEntity.ok(UserProfileResponseDTO.of(user.getStoredFileUrl(), user.getNickname(), user.getRole()));
+        return ResponseEntity.ok(UserProfileResponseDTO.of(user.getStoredFileUrl(), user.getNickname(), user.getRole(),user.getSocialType()));
     }
 
     @PatchMapping("/profile/nickname")
