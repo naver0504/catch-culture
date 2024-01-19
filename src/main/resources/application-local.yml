@@ -14,7 +14,6 @@ spring:
         registration:
           google:
             client-id: 1059461192535-c8giu285cbt1fkokf1bbtnpojsd7lru2.apps.googleusercontent.com
-            client-secret: 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
             scope: profile, email
             redirect-uri: http://localhost:8080/login/oauth2/code/google
           kakao:
