@@ -122,7 +122,7 @@ public class CulturalEventQueryRepository {
 
                 )
                 .orderBy(
-                        getSortType(sortType)
+                        setOrderWithSortType(sortType)
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -163,7 +163,7 @@ public class CulturalEventQueryRepository {
                         titleContains(keyword),
                         categoryIn(categoryList)
                 ).orderBy(
-                        getSortType(sortType)
+                        setOrderWithSortType(sortType)
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -195,12 +195,11 @@ public class CulturalEventQueryRepository {
             case LIKE, STAR -> {
                 final LikeStar likeStar = LikeStar.of(classification);
                 content = getLikeStarContent(categoryList, userId, classification, now, likeStar);
-                count = getLikeStarCount(categoryList, userId, now, likeStar);;
+                count = getLikeStarCount(categoryList, userId, now, likeStar);
             }
             case VISIT_AUTH -> {
                 content = getAuthenticatedContent(categoryList, userId, classification, now);
                 count = getAuthenticatedCount(categoryList, userId, now);
-                break;
             }
         }
           return new PageImpl<>(content, pageable, count);
@@ -240,42 +239,33 @@ public class CulturalEventQueryRepository {
     }
 
 
-    private OrderSpecifier[] getSortType(final SortType sortType) {
+    private OrderSpecifier[] setOrderWithSortType(final SortType sortType) {
 
         List<OrderSpecifier> orderSpecifier = new ArrayList<>();
         switch (sortType) {
             case VIEW_COUNT -> {
                 orderSpecifier.add(new OrderSpecifier<>(Order.DESC, culturalEvent.viewCount));
                 startDateASC(orderSpecifier);
-                break;
             }
             case LIKE -> {
                 orderSpecifier.add(new OrderSpecifier<>(Order.DESC, culturalEvent.likeCount));
                 startDateASC(orderSpecifier);
-                break;
             }
             case RECENT -> {
                 startDateASC(orderSpecifier);
                 orderSpecifier.add(new OrderSpecifier<>(Order.ASC, culturalEvent.culturalEventDetail.endDate));
-                break;
             }
 
         }
         return orderSpecifier.toArray(new OrderSpecifier[0]);
     }
 
-    private OrderSpecifier[] getSortTypeWithClassification(final Classification classification) {
+    private OrderSpecifier[] setOrderWithClassification(final Classification classification) {
 
         final List<OrderSpecifier> orderSpecifier = new ArrayList<>();
         switch (classification) {
-            case VISIT_AUTH -> {
-                orderSpecifier.add(new OrderSpecifier<>(Order.DESC, visitAuth.createdAt));
-                break;
-            }
-            case LIKE , STAR -> {
-                orderSpecifier.add(new OrderSpecifier<>(Order.DESC, interaction.createdAt));
-                break;
-            }
+            case VISIT_AUTH -> orderSpecifier.add(new OrderSpecifier<>(Order.DESC, visitAuth.createdAt));
+            case LIKE , STAR -> orderSpecifier.add(new OrderSpecifier<>(Order.DESC, interaction.createdAt));
         }
         startDateASC(orderSpecifier);
 
@@ -323,7 +313,7 @@ public class CulturalEventQueryRepository {
                         categoryIn(categoryList),
                         userIdEqWithVisitAuth(userId)
                 ).orderBy(
-                        getSortTypeWithClassification(classification)
+                        setOrderWithClassification(classification)
                 ).fetch();
     }
 
@@ -371,7 +361,7 @@ public class CulturalEventQueryRepository {
                         categoryIn(categoryList),
                         userIdEqWithInteraction(userId)
                 ).orderBy(
-                        getSortTypeWithClassification(classification)
+                        setOrderWithClassification(classification)
                 ).fetch();
     }
 }
