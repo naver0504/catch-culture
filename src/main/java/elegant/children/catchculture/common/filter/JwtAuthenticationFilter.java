@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             authorization.ifPresentOrElse(
                     cookie -> {
                         String token = CookieUtils.deserialize(cookie.getValue(), String.class);
-                        token = resolveToken(token);
+                        token = jwtTokenProvider.resolveToken(token);
                         if(!jwtTokenProvider.validateToken(token))
                             throw new RuntimeException();
                         final String email = jwtTokenProvider.getEmail(token);
@@ -69,10 +69,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     }
 
-    private String resolveToken(String token) {
-        if (token != null && token.startsWith("Bearer ")) {
-            return token.substring(7);
-        }
-        return token;
-    }
+
 }

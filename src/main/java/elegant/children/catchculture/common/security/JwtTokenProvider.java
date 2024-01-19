@@ -54,6 +54,13 @@ public class JwtTokenProvider {
         return Role.valueOf(claims.get(ROLE, String.class));
     }
 
+    public String resolveToken(String token) {
+        if (token != null && token.startsWith("Bearer ")) {
+            return token.substring(7);
+        }
+        return token;
+    }
+
     public boolean validateToken(final String token) {
         try {
             Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
